@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}북마크 상세보기{% endblock %}
+
+{% block content %}
+<h1 class="title">{{object.title}}</h1>
+<div class="list_wrap02">
+		<ul>
+			<li>바로가기: <a href="{{object.url}}" target="_blank">{{object.url}}</a></li>
+		</ul>
+	</div>
+	
+	<div class="paging pdt50">
+		<span class="page">	
+			<a href="/bookmark"> 목록으로 </a>
+		</span>	
+	</div>
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div style="text-align:center; padding:20px 0 "class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

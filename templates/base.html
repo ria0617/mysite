@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=drvice-width, initial-scale=1">
+<title>{% block title %}장고 프로젝스{% endblock %}</title>
+<script src="https://kit.fontawesome.com/925f178068.js" crossorigin="anonymous"></script>
+
+<!-- 부트스트랩 -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">   
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"> 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+{% load static %} 
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block extra-style %}
+
+{% endblock %}
+</head>
+<body>
+	<nav id="navbar-example" class="navbar navbar-default navbar-static">
+		<div class="container-fluid">
+			<!-- 네비게이션(nav)의 기본 설정으로 모바일일 때, 메뉴 버튼이 나온다. -->
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<!-- 타이틀임. -->
+				<a class="navbar-brand" href="{% url 'home' %}">로고</a>
+			</div>
+			<!-- 메뉴 설정 -->
+			<div class="collapse navbar-collapse">
+				<!-- 메뉴는 왼쪽으로 두개 설정 -->
+				<ul class="nav navbar-nav">
+					<!-- 메뉴 이름은 Hello로 서브 옵션은 Test1과 Test2가 있다. -->
+					<li><a aria-current="page"href="{% url 'blog:index' %}">블로그</a></li>
+					<li><a href="{% url 'bookmark:index' %}">북마크</a></li>
+                    <li><a href="{% url 'blog:post_archive' %}">아카이브</a></li>
+                    <li><a href="{% url 'photo:index' %}">사진</a></li>
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								검색<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'blog:search' %}">검색</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								추가<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'bookmark:add' %}">북마크 추가</a></li>
+							<li><a href="{% url 'blog:add' %}">포스팅 추가</a></li>
+							<li><a href="{% url 'photo:album_add' %}">앨범 추가</a></li>
+							<li><a href="{% url 'photo:photo_add' %}">사진 추가</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								수정<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'bookmark:change' %}">북마크 수정</a></li>
+							<li><a href="{% url 'blog:change' %}">포스팅 수정</a></li>
+							<li><a href="{% url 'photo:album_change' %}">앨범 수정</a></li>
+							<li><a href="{% url 'photo:photo_change' %}">사진 수정</a></li>
+						</ul>
+					</li>
+				</ul>
+
+				<!-- 오른쪽 메뉴 -->
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						 {% if user.is_active %}
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							 <i class="fas fa-user"></i>&ensp;{% firstof user.get_shor_name user.get_username %}&ensp;<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'logout' %}">로그아웃</a></li>
+							<li><a href="{% url 'password_change' %}">비밀번호 변경</a></li>
+						</ul>
+						{% else %}
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							 <i class="fas fa-user"></i>&ensp;로그인&ensp;<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'login' %}">로그인</a></li>
+							<li><a href="{% url 'register' %}">회원가입</a></li>
+						</ul>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container" style="margin:50px auto 100px auto">
+		{% block content %}{% endblock %}
+	</div>
+	
+	{% block footer %}{% endblock %}
+	{% block extra-script %}{% endblock %}
+</body>
+</html>

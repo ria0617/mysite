@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}로그아웃 완료{% endblock %}
+{% block content %}
+
+	<h1 class="title">로그아웃 완료</h1>
+	<p class="txc pdt50">로그아웃 되셨습니다</p>
+	
+	<div class="pdt50 txc"><a class="btn btn-info" href="{% url 'login' %}">로그인 하러 가기</a></div>	
+	
+{% endblock %}
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}앨범목록{% endblock %}
+
+{% block content %}
+	<h1 class="title">앨범목록</h1>
+	
+	{% for item in object_list %}
+	<div class="mt-5 stitle">
+		<a class="h2"  href="{% url 'photo:album_detail' item.id %}">
+		{{ item.name }}
+		</a>
+		<span>{{ item.description }}</span>
+	</div>
+	
+	<div class="row">
+		<div class="ml-5 al_wrap">
+			<ul>
+			{% for photo in item.photo_set.all|slice:":6" %}
+					<li class="col-md-2 col-xs-12">
+						<a href="{{ photo.get_absolute_url }}">
+							<img src="{{ photo.image.thumb_url }}" />
+						</a>
+					</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+	{% endfor %}
+		
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

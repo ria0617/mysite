@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}태그 클라우드{% endblock %}
+
+{% block content %}
+
+	<h1 class="title">태그 글라우드</h1>
+	
+	<div>
+		{% load taggit_templatetags2_tags %}
+		{% get_tagcloud as tags %}
+		{% for tag in tags %}
+			<span>
+				<a href="{% url 'blog:tagged_object_list' tag.name %}" >{{tag.name}}{{tag.num_times}}</a>
+			</span>
+		{% endfor %}
+	</div>
+	
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

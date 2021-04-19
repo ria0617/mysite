@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}사진 상세보기{% endblock %}
+
+{% block content %}
+
+	<h2 class="title">{{ object.title }}</h2>
+	
+	<div class="row mgt50">
+		<div class="col-md-9">
+			<a href="{{ object.image.url }}">
+				<img src="{{ object.image.url }}" />
+			</a>
+		</div>
+		<ul class="col-md-3 mt-3">
+			<li>사진 설명</li>
+			{% if object.description %}
+				{{ object.description|linebreaks }}
+			{% else %}
+				<p>blank</p>
+			{% endif %}
+			
+			<li>데이터 업로드</li>
+			{{ object.upload_dt }}
+			
+			<li>앨범 이름</li>
+			<a href="{% url 'photo:album_detail' object.album.id %}">
+				{{ object.album.name }}
+			</a>
+		</ul>
+	</div>
+
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

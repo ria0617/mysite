@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+	<h2 class="title">제목: {{ object.title }}</h2>
+	
+	<div class="txc pdt20">작성일: {{ object.modify_dt|date:"Y.m.d " }}</div>
+	
+	<div class="contents">
+		{{ object.content|linebreaks }}
+		<!-- 태그 -->
+		<div class="post_tag">
+			{% load taggit_templatetags2_tags %}
+			{% get_tags_for_object object as "tags" %}
+			<ul>
+				<li>tag : </li>
+				{% for tag in tags %}
+					<li><a href="{% url 'blog:tagged_object_list' tag.name%}">{{tag.name}}&nbsp;&nbsp;|</a></li>
+				{% endfor %}
+				<li><a href="{% url 'blog:tag_cloud' %}">태그 목록</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="paging">
+		<span class="prev">
+			{% if object.get_previous%}
+			<a href="{{ object.get_previous.get_absolute_url }}"  title="View previos post">
+				&#60;&#60; 이전글: {{ object.get_previous }}
+			</a>
+			{% endif %}
+		</span>
+		
+		<span class="page">	
+			<a href="/blog"> 목록으로 </a>
+		</span>	
+		
+		<span class="next">
+		{% if object.get_next%}
+		<a href="{{ object.get_next.get_absolute_url }}"  title="View next post">
+			다음글: {{ object.get_next }} &#62;&#62;
+		</a>
+		{% endif %}
+		</span>
+	</div>
+	
+	<div id="disqus_thread" class="mgt50"></div>
+{% endblock %}
+
+<!-- 댓글 -->
+{% block extra-script %}
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+
+    var disqus_config = function () {
+	    this.page.identifier = '{{ disqus_id }}';
+	    this.page.url = '{{ disqus_url }}';
+	    this.page.title = '{{ disqus_title }}';
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ disqus_short }}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>    
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

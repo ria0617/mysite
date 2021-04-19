@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}블로그 목록{% endblock %}
+
+{% block content %}
+	<h1 class="title">블로그 목록</h1>
+	
+	<div class="list_wrap">
+		<table class="type01">
+			<colgroup>
+				<col width="*">
+				<col width="150px">
+				<col width="0px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th> 제목</th>
+					<td colspan=2>날짜</td>
+				</tr>
+			</thead>
+			{% for post in posts %}
+				<tr>
+					<th>
+						<a href='{{ post.get_absolute_url }}'>{{post.title}}</a>
+					</th>
+					<td>{{post.modify_dt|date:"N d, Y"}}</td>
+					<td class="hidden">{{post.desciption}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+	
+	<div class="paging">
+		<span class="prev">
+			{% if page_obj.has_previous %}
+				<a href="?page={{page_obj.previous_page_number}}"> &#60;&#60; </a>
+			{% endif %}
+		</span>	
+		
+		<span class="page">	
+			Page {{ page_obj.number }} of {{page_obg.paginator.num_pages}}
+		</span>	
+		
+		<span class="next">	
+			{% if page_obj.has_next %}
+				<a href="?page={{page_obj.next_page_number}}">	&#62;	&#62; </a>
+			{% endif %}
+		</span>
+	</div>
+	
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

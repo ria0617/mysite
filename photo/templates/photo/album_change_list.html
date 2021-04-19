@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block title %}앨범 수정 목록{% endblock %}
+{% block content %}
+
+	<h1 class="title">{{ user }}가 올린 앨범</h1>
+	<div class="mgt50">
+		<table class="type01">
+			<colgroup>
+				<col width="10%">
+				<col width="*">
+				<col width="10%">
+				<col width="10%">
+				<col width="10%">
+			</colgroup>
+			<thead>
+				<tr class="table-primary">
+					<th>이름</th>
+					<th>설명</th>
+					<th>작성자</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in object_list %}
+				<tr>
+					<td>{{ item.name }}</td>
+					<td class="tal">{{ item.description }}</td>
+					<td>{{ item.owner }}</td>
+					<td><a href="{% url 'photo:album_update' item.id %}">수정</a></td>
+					<td><a href="{% url 'photo:album_delete' item.id %}">삭제</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		
+		</table>
+	</div>	
+
+{% endblock %}
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

@@ -1,0 +1,344 @@
+@charset "UTF-8";
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
+	output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	font-family: 'Nanum Gothic';
+	font-style: normal;
+	font-weight: normal;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+	outline: none
+}
+
+a:hover, a:active {
+	text-decoration: none;
+	color: #000;
+	background-color: #fff;
+}
+
+.hidden {
+	display:none;
+}
+
+.pdt50 {
+	padding-top:50px;
+}
+
+.pdt20 {
+	padding-top:20px;
+}
+
+.mgt50 {
+	margin-top:50px;
+}
+.main-bg {
+	background-image: url("../../static/img/bg.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:cover;
+	height:500px; 
+	color:#fff;
+	padding:50px;
+}
+.main-bg h2 {
+	font-size:2rem;
+}
+.main-bg h4 {
+	padding-top:20px;
+	font-size:1.5rem;
+}
+
+.main-con h3 {
+	font-size:1.3rem;
+	font-weight:700;
+}
+.main-con p {
+	padding-top:20px;
+	line-height:1.8rem;
+}
+.title {
+	text-align:center;
+	padding:50px 0 0 0;
+	font-size:2rem;
+	font-weight:700;
+}
+
+.list_wrap, .list_wrap02 {
+	width:90%;
+	max-width:1200px;
+	margin:0 auto;
+	padding-top:50px;
+}
+.list_wrap, .list_wrap02 span{
+	font-weight:700;
+	padding-right:20px;
+}
+table.type01 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 2.5rem;
+  width:100%;
+  border-bottom: 1px solid #ccc;
+}
+
+table.type01 thead th, table.type01 thead td {
+	text-align:center;
+	font-weight:700;
+	line-height: 2;
+	background:#2B76C2;
+	border-top: 1px solid #2B76C2;
+	border-right: 1px solid #fff;
+	color:#fff;
+}
+
+table.type01 th {
+  padding: 10px;
+  font-weight: normal;
+  vertical-align: top;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+table.type01 td {
+  padding: 10px;
+  vertical-align: top;
+  border-top: 1px solid #ccc;
+  text-align:center;
+}
+ 
+.paging {
+	margin:50px auto 0 auto;
+	text-align:center;
+}
+
+.paging .prev {
+	padding-right:20px;
+}
+
+.paging .next {
+	padding-left:20px;
+}
+
+.paging .next a, .paging .prev a{
+	font-weight:700;
+	font-size:12px;
+}
+
+.paging .page {
+	font-weight:700;
+}
+
+.contents {
+	width:100%;
+	margin:0 auto;
+}
+.contents p {
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	margin:50px 0 20px 0;
+	padding:50px;
+}
+
+.year_list{
+	width:90%;
+	max-width:1200px;
+	margin:0 auto;
+}
+
+.year_list ul {
+	padding:50px 0 0px 0px;
+	display:block;
+	clear:both;
+	overflow:hidden;
+}
+
+.year_list ul li {
+	float:left;
+}
+
+.year_list ul li a{
+	padding:10px;
+	border-top:1px solid #ccc;
+	float:left;
+}
+
+
+.list_wrap02 ul {
+	border-top:2px solid #2B76C2;
+}
+
+.list_wrap02 ul li {
+	border-bottom:1px solid #ccc;
+	line-height:3.5rem;
+	padding-left:10px;
+}
+
+.list_wrap02 ul li .subject {
+	padding-left:10px;
+}
+.list_wrap02 ul li .date {
+	font-size:12px;
+}
+
+.txc{
+	text-align:center;
+}
+
+table.type01 td.tal {
+	text-align:left;
+}
+.list_wrap02 ul li .subject a {
+	font-weight:700;
+	padding-left:12px;
+}
+
+.list_wrap02 ul li .subject:before {
+	content:'';
+	border-left:1px solid #ccc;
+}
+
+footer {
+	padding:20px 0;
+	text-align:center;
+}
+
+/* 태그 스타일 */
+.post_tag ul{
+	display:block;
+	overflow:hidden;
+	clear:both;
+}
+
+.post_tag ul li{
+	float:left;
+	padding-right:10px;
+}
+
+.post_tag ul li a{
+	color: #ccc;
+}
+
+/* 검색 스타일 */
+.search {
+	padding-top:50px;
+}
+.search form {
+	text-align:center;
+}
+.search label {
+	padding-right:20px;
+}
+.search input[id="id_search_word"] {
+	border: 1px solid #ccc;
+	height:30px;
+	line-height:30px;
+}
+
+.search p {
+	text-align:center;
+	font-weight:700;
+}
+
+
+/* 사진 스타일 */
+.stitle {
+	border-bottom:2px solid #ccc;
+	padding:50px 0 10px 0;
+}
+
+.al_wrap {
+	padding-top:20px;	
+}
+
+.al_wrap ul{
+	clear:both;
+	overflow:hidden;
+	display:block;
+}
+
+.al_wrap ul li{
+	float:left;
+	text-align:center;
+}
+
+.al_wrap ul li a{
+	margin:0 10px;
+	border:1px solid #f2f2f2;
+	display:block;
+}
+
+.al_wrap ul li span {
+	padding-top:10px;
+	display:block;
+}
+.al_wrap ul li img {
+	width:100%;
+}
+.pdb20 {
+	padding-bottom:50px;
+}
+
+.border01 {
+	border:1px solid #ccc;
+}
+
+.border02 {
+	border-top:2px dotted #ccc;
+}
+
+.pd50 {
+	padding:50px;
+}
+
+.title02 {
+	text-align:center;
+	font-weight:700;
+	font-size:1.2rem;
+	padding-bottom:20px;
+}
+
+.mgb50 {
+	margin-bottom:50px;
+}

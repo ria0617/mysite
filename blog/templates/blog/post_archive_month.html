@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}아카이브{% endblock %}
+
+{% block content %}
+	<h1 class="title">{{ month|date:"Y" }}년 {{ month|date:"m" }}월에 작성한 글</h1>
+	
+	<div class="list_wrap02">
+		<ul>
+			{% for post in object_list %}
+			<li>
+				<span class="date">{{ post.modify_dt|date:"Y-m-d"}}</span>
+				<span class="subject">
+				<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+				</span>
+			</li>
+			{% endfor %}
+		</ul>	
+	</div>
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}

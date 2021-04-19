@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}앨범 상세보기{% endblock %}
+
+{% block content %}
+	<h1 class="title">{{ object.name }} 앨범 상세보기</h1>
+
+	<div class="row">
+		<div class="al_wrap col-md3 mb-5">
+			<ul class="mgt50">
+			{% for photo in object.photo_set.all %}
+				<li class="col-md-2 col-xs-12 pdb20">
+					<a href="{{ photo.get_absolute_url }}">
+						<img src="{{ photo.image.thumb_url }}" />
+					</a>
+					<span>{{ photo.title }}</span>
+					<span>{{ photo.upload_dt|date:"Y-m-d" }}</span>
+				</li>
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+		
+{% endblock %}
+
+{% block footer %}
+<footer class="fixed-bottom bg-info">
+	<div class="text-white font-italic mr-5">카피라이터 부분</div>
+</footer>
+{% endblock %}
